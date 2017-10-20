@@ -1,0 +1,2 @@
+class EmployeeComputer < ApplicationRecord
+end
