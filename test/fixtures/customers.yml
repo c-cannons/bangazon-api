@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_first_name: MyString
+  customer_last_name: MyString
+  customer_acct_date: 2017-10-20 11:47:55
+  customer_active: false
+
+two:
+  customer_first_name: MyString
+  customer_last_name: MyString
+  customer_acct_date: 2017-10-20 11:47:55
+  customer_active: false

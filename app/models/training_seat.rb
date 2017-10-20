@@ -1,0 +1,2 @@
+class TrainingSeat < ApplicationRecord
+end
