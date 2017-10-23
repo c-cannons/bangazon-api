@@ -13,8 +13,10 @@
 ActiveRecord::Schema.define(version: 20171020165222) do
 
   create_table "computers", force: :cascade do |t|
-    t.datetime "purchase_date"
-    t.datetime "decomm_date"
+    t.string "computer_brand", limit: 10, null: false
+    t.string "computer_model", limit: 10, null: false
+    t.datetime "purchase_date", null: false
+    t.datetime "decomm_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,8 +31,8 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "dept_name"
-    t.float "budget"
+    t.string "dept_name", limit: 20, null: false
+    t.decimal "budget", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
