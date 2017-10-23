@@ -29,7 +29,7 @@ end
 private
 
 def computer_params
-    params.permit(:purchase_date, :decomm_date)
+  params.require(:computers).permit(:purchase_date, :decomm_date)
 end
 
 end
