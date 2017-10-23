@@ -23,8 +23,10 @@ class DepartmentsController < ApplicationController
 
   #PATCH/PUT /departments/1
   def update
+    @department = Department.find(params[:id])
+
     if @department.update(department_params)
-      render json: @student
+      render json: @department
     else
       render json: @department.errors, status: :unprocessable_entity
     end
