@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @customer.update(product_params)
-    json_response(product)
+    json_response(@product)
   end
 
   def delete
