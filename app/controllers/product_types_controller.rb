@@ -1,7 +1,7 @@
 class ProductTypesController < ApplicationController
 
   def index
-      @product_types = ProductType.all
+    @product_types = ProductType.all
       json_response(@product_types)
   end
 
