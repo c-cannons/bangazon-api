@@ -21,7 +21,7 @@ class CustomersController < ApplicationController
         @customer.update(customer_params)
         json_response(@customer)
     end
-       
+
     private
         def customer_params
             params.require(:customer).permit(:customer_first_name, :customer_last_name, :customer_acct_date, :customer_active)
