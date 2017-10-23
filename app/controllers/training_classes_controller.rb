@@ -23,8 +23,10 @@ class TrainingClassesController < ApplicationController
 
   def destroy
     @training_classes = TrainingClass.find(params[:id])
-    if Date.parse(:start_date) < Date.today
+    if Date.parse(@training_classes[:end_date].to_s) < Date.today
       @training_classes.destroy
+    else
+      render html: "You done messed up Chud.", status: :bad
     end
   end
 
