@@ -11,16 +11,17 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Customer.create(product_params)
+    @product = Product.create(product_params)
+    json_response(@product)
   end
 
   def update
     @product = Product.find(params[:id])
-    @customer.update(product_params)
+    @product.update(product_params)
     json_response(@product)
   end
 
-  def delete
+  def destroy
     @product = Product.find(params[:id])
     @product.destroy
   end
