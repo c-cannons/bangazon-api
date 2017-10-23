@@ -22,6 +22,11 @@ class OrdersController < ApplicationController
       json_response(@order)
   end
 
+  def delete
+    @order = Order.find(params[:id])
+    @order.destroy
+  end
+
   private
     def order_params
         params.require(:order).permit(:customer_id, :pay_method_id)

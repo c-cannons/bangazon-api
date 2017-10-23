@@ -22,6 +22,11 @@ class ProductTypesController < ApplicationController
       json_response(@product_type)
   end
 
+  def delete
+    @product_type = ProductType.find(params[:id])
+    @product_type.destroy
+  end
+
   private
     def product_type_params
         params.require(:product_type).permit(:product_type_name)
