@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "customer_first_name"
-    t.string "customer_last_name"
-    t.datetime "customer_acct_date"
-    t.boolean "customer_active"
+    t.string "customer_first_name", limit: 10, null: false
+    t.string "customer_last_name", limit: 20, null: false
+    t.datetime "customer_acct_date", null: false
+    t.boolean "customer_active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,41 +60,46 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
+    t.integer "products_id", null: false
+    t.integer "orders_id", null: false
     t.float "discount"
-    t.float "ext_price"
+    t.decimal "ext_price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["orders_id"], name: "index_order_details_on_orders_id"
+    t.index ["products_id"], name: "index_order_details_on_products_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "pay_method_id"
+    t.integer "customers_id", null: false
+    t.integer "pay_methods_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customers_id"], name: "index_orders_on_customers_id"
+    t.index ["pay_methods_id"], name: "index_orders_on_pay_methods_id"
   end
 
   create_table "pay_methods", force: :cascade do |t|
-    t.string "payment_type"
-    t.integer "account_number"
+    t.string "payment_type", limit: 15, null: false
+    t.integer "account_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "product_types", force: :cascade do |t|
-    t.string "product_type_name"
+    t.string "product_type_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "product_name"
-    t.float "product_price"
-    t.string "product_description"
-    t.integer "product_type_id"
+    t.string "product_name", limit: 20, null: false
+    t.float "product_price", null: false
+    t.string "product_description", limit: 50, null: false
+    t.integer "product_types_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_types_id"], name: "index_products_on_product_types_id"
   end
 
   create_table "training_classes", force: :cascade do |t|
