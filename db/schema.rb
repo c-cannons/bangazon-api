@@ -107,21 +107,12 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "training_seats", force: :cascade do |t|
-<<<<<<< HEAD
-    t.integer "class_id_id", null: false
-    t.integer "employee_id_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["class_id_id"], name: "index_training_seats_on_class_id_id"
-    t.index ["employee_id_id"], name: "index_training_seats_on_employee_id_id"
-=======
     t.integer "training_classes_id", null: false
     t.integer "employees_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employees_id"], name: "index_training_seats_on_employees_id"
     t.index ["training_classes_id"], name: "index_training_seats_on_training_classes_id"
->>>>>>> b332e41cfb3e7bc51387c7bec53a2e9b247b5059
   end
 
 end
