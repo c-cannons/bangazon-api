@@ -44,18 +44,19 @@ TrainingClass.destroy_all
     product_type_name: Faker::Beer.name
   }])
 
+  Department.create([{
+    dept_name: Faker::Job.field,
+    budget: Faker::Number.decimal(2)
+  }])
+
   Employee.create([{
     employee_first_name: Faker::Name.first_name,
     employee_last_name: Faker::Name.last_name,
     employee_title: Faker::Job.title,
     is_supervisor: true,
-    dept_id: Faker::Number.number(3)
+    department: Faker::Job.field
   }])
 
-  Department.create([{
-    dept_name: Faker::Job.field,
-    budget: Faker::Number.decimal(2)
-  }])
 
   Computer.create([{
     purchase_date: Faker::Date.between(2.years.ago, Date.today),
@@ -68,7 +69,5 @@ TrainingClass.destroy_all
     end_date: Faker::Date.between(2.years.ago, Date.today),
     max_seats: Faker::Number.number(2)
   }])
-
-
 
 end
