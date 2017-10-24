@@ -12,6 +12,7 @@ class EmployeesController < ApplicationController
 
   # POST /employees
   def create
+
     @employee = Employee.new(employee_params)
 
     if @employee.save
