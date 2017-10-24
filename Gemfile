@@ -12,7 +12,8 @@ gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# Faker Data
+
+# User Faker to generate Database Data
 gem 'faker', '~> 1.7', '>= 1.7.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

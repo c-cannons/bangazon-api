@@ -11,9 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-      @order Order.create(order_params)
+      @order = Order.create(order_params)
       json_response(@order)
-      # redirect_to @order
   end
 
   def update
