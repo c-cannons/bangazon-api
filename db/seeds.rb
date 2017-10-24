@@ -19,7 +19,8 @@ TrainingClass.destroy_all
   Customer.create([{
       customer_first_name: Faker::Name.first_name,
       customer_last_name: Faker::Name.last_name,
-      customer_acct_date: Faker::Date.between(2.years.ago, Date.today)
+      customer_acct_date: Faker::Date.between(2.years.ago, Date.today),
+      customer_active: true
   }])
 end
 
@@ -58,7 +59,7 @@ end
     employee_last_name: Faker::Name.last_name,
     employee_title: Faker::Job.title,
     is_supervisor: true,
-    department: Department.find(rand(1..5))
+    department: Department.find(rand(46..50))
   }])
 end
 
