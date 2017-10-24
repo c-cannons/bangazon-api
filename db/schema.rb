@@ -38,14 +38,24 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "employee_computers", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer "comp_id_id", null: false
     t.integer "employee_id_id", null: false
+=======
+    t.integer "computers_id", null: false
+    t.integer "employees_id", null: false
+>>>>>>> b332e41cfb3e7bc51387c7bec53a2e9b247b5059
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.index ["comp_id_id"], name: "index_employee_computers_on_comp_id_id"
     t.index ["employee_id_id"], name: "index_employee_computers_on_employee_id_id"
+=======
+    t.index ["computers_id"], name: "index_employee_computers_on_computers_id"
+    t.index ["employees_id"], name: "index_employee_computers_on_employees_id"
+>>>>>>> b332e41cfb3e7bc51387c7bec53a2e9b247b5059
   end
 
   create_table "employees", force: :cascade do |t|
@@ -107,12 +117,21 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "training_seats", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer "class_id_id", null: false
     t.integer "employee_id_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["class_id_id"], name: "index_training_seats_on_class_id_id"
     t.index ["employee_id_id"], name: "index_training_seats_on_employee_id_id"
+=======
+    t.integer "training_classes_id", null: false
+    t.integer "employees_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employees_id"], name: "index_training_seats_on_employees_id"
+    t.index ["training_classes_id"], name: "index_training_seats_on_training_classes_id"
+>>>>>>> b332e41cfb3e7bc51387c7bec53a2e9b247b5059
   end
 
 end
