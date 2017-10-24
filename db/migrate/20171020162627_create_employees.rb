@@ -5,7 +5,7 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
       t.string :employee_last_name, null: false, limit: 20
       t.string :employee_title, null: false, limit: 20
       t.boolean :is_supervisor, null: false, default: false
-      t.references :department, null: false, foreign_key: true
+      t.references :department, index: true, null: false, foreign_key: true
       t.timestamps
 
     end
