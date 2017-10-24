@@ -29,6 +29,6 @@ class ProductTypesController < ApplicationController
 
   private
     def product_type_params
-        params.require(:product_type).permit(:product_type_name)
+        params.require(:product_types).permit(:product_type_name)
     end
 end
