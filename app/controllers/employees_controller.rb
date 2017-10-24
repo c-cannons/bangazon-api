@@ -12,6 +12,7 @@ class EmployeesController < ApplicationController
 
   # POST /employees
   def create
+
     @employee = Employee.new(employee_params)
 
     if @employee.save
@@ -37,6 +38,6 @@ class EmployeesController < ApplicationController
 
     # FINISH THIS ******
     def employee_params
-      params.require(:employee).permit(:employee_first_name, :employee_last_name, :employee_title, :is_supervisor, :department)
+      params.require(:employee).permit(:employee_first_name, :employee_last_name, :employee_title, :is_supervisor, :department_id)
     end
 end
