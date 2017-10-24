@@ -1,7 +1,7 @@
 class EmployeeComputer < ApplicationRecord
 
-  belongs_to :computer, :employee
+  # belongs_to :computer, :employee
 
-  validates_presence_of :comp_id, :employee_id, :start_date, :end_date
+  validates_presence_of :computers_id, :employees_id, :start_date, :end_date
 
 end
