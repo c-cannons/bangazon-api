@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "employee_computers", force: :cascade do |t|
-    t.integer "comp_id"
-    t.integer "employee_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.integer "computers_id", null: false
+    t.integer "employees_id", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["computers_id"], name: "index_employee_computers_on_computers_id"
+    t.index ["employees_id"], name: "index_employee_computers_on_employees_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -96,19 +98,21 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "training_classes", force: :cascade do |t|
-    t.string "class_name"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "max_seats"
+    t.string "class_name", limit: 20, null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+    t.integer "max_seats", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "training_seats", force: :cascade do |t|
-    t.integer "class_id"
-    t.integer "employee_id"
+    t.integer "training_classes_id", null: false
+    t.integer "employees_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["employees_id"], name: "index_training_seats_on_employees_id"
+    t.index ["training_classes_id"], name: "index_training_seats_on_training_classes_id"
   end
 
 end
