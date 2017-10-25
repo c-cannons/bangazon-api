@@ -1,10 +1,10 @@
 class CreateProducts < ActiveRecord::Migration[5.1]
   def change
     create_table :products do |t|
-      t.string :product_name
-      t.float :product_price
-      t.string :product_description
-      t.integer :product_type_id
+      t.string :product_name, null: false, limit: 20
+      t.float :product_price, null: false
+      t.string :product_description, null: false, limit: 50
+      t.references :product_types, index: true, null: false, foreign_key: true
 
       t.timestamps
     end
