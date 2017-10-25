@@ -4,13 +4,13 @@ class CustomersController < ApplicationController
       if params[:customer_active] == "true"
         @customers = Customer.where(customer_active: 'true')
         json_response(@customers)
-      else
+      elsif params[:customer_active] == "false"
         @customers = Customer.where.not(customer_active: 'true')
         json_response(@customers)
+      else
+        @customers = Customer.all
+        json_response(@customers)
       end
-
-      # @customers = Customer.all
-      # json_response(@customers)
   end
 
   def show
