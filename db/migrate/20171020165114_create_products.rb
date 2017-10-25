@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :product_name, null: false, limit: 20
       t.float :product_price, null: false
       t.string :product_description, null: false, limit: 50
-      t.references :product_types, index: true, null: false, foreign_key: true
+      t.references :product_type, index: true, null: false, foreign_key: true
 
       t.timestamps
     end

@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "employee_computers", force: :cascade do |t|
-    t.integer "computers_id", null: false
-    t.integer "employees_id", null: false
+    t.integer "computer_id", null: false
+    t.integer "employee_id", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["computers_id"], name: "index_employee_computers_on_computers_id"
-    t.index ["employees_id"], name: "index_employee_computers_on_employees_id"
+    t.index ["computer_id"], name: "index_employee_computers_on_computer_id"
+    t.index ["employee_id"], name: "index_employee_computers_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -60,23 +60,23 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "products_id", null: false
-    t.integer "orders_id", null: false
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
     t.float "discount"
     t.decimal "ext_price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["orders_id"], name: "index_order_details_on_orders_id"
-    t.index ["products_id"], name: "index_order_details_on_products_id"
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customers_id", null: false
-    t.integer "pay_methods_id"
+    t.integer "customer_id", null: false
+    t.integer "pay_method_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customers_id"], name: "index_orders_on_customers_id"
-    t.index ["pay_methods_id"], name: "index_orders_on_pay_methods_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["pay_method_id"], name: "index_orders_on_pay_method_id"
   end
 
   create_table "pay_methods", force: :cascade do |t|
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20171020165222) do
     t.string "product_name", limit: 20, null: false
     t.float "product_price", null: false
     t.string "product_description", limit: 50, null: false
-    t.integer "product_types_id", null: false
+    t.integer "product_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_types_id"], name: "index_products_on_product_types_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end
 
   create_table "training_classes", force: :cascade do |t|
@@ -112,12 +112,12 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "training_seats", force: :cascade do |t|
-    t.integer "training_classes_id", null: false
-    t.integer "employees_id", null: false
+    t.integer "training_classe_id", null: false
+    t.integer "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["employees_id"], name: "index_training_seats_on_employees_id"
-    t.index ["training_classes_id"], name: "index_training_seats_on_training_classes_id"
+    t.index ["employee_id"], name: "index_training_seats_on_employee_id"
+    t.index ["training_classe_id"], name: "index_training_seats_on_training_classe_id"
   end
 
 end
