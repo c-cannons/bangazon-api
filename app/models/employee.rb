@@ -1,6 +1,9 @@
 class Employee < ApplicationRecord
   # has_one :computer
   belongs_to :department
+
+
+
   has_many :training_classes, through: :training_seat
   has_many :computers, through: :employee_computer
 
