@@ -3,8 +3,4 @@ class OrderSerializer < ActiveModel::Serializer
 
   has_many :products
 
-  private
-  def order_details
-      OrderDetailsSerializer.new(object.order_details).attributes
-  end
 end
