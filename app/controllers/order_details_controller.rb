@@ -2,12 +2,12 @@ class OrderDetailsController < ApplicationController
 
   def index
     @order_details = OrderDetail.all
-    json_response(@order_details)
+    render json: @order_details
   end
 
   def show
     @order_detail = OrderDetail.find(params[:id])
-    json_response(@order_detail)
+    render json: @order_detail, serializer: OrderSerializer
   end
 
   def create
