@@ -112,12 +112,12 @@ ActiveRecord::Schema.define(version: 20171020165222) do
   end
 
   create_table "training_seats", force: :cascade do |t|
-    t.integer "training_classe_id", null: false
+    t.integer "training_class_id", null: false
     t.integer "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_training_seats_on_employee_id"
-    t.index ["training_classe_id"], name: "index_training_seats_on_training_classe_id"
+    t.index ["training_class_id"], name: "index_training_seats_on_training_class_id"
   end
 
 end

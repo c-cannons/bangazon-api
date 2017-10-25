@@ -28,7 +28,7 @@ def index
 
   private
     def employee_computer_params
-      params.require(:employee_computer).permit(:computers_id, :employees_id, :start_date, :end_date)
+      params.require(:employee_computer).permit(:computer_id, :employee_id, :start_date, :end_date)
     end
 
 end
