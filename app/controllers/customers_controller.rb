@@ -1,14 +1,16 @@
 class CustomersController < ApplicationController
 
   def index
-    if params[:customer_active] == "true"
-      @customer = Customer.where(params[customer_active: true])
-      json_response(@customers)
-    else
-      @customer = Customer.where.not(params[customer_active: false])
-      json_response(@customers)
-    end
-      # @customers = Customer.all
+      if params[:customer_active] == "true"
+        @customers = Customer.where(customer_active: 'true')
+        json_response(@customers)
+      elsif params[:customer_active] == "false"
+        @customers = Customer.where.not(customer_active: 'true')
+        json_response(@customers)
+      else
+        @customers = Customer.all
+        json_response(@customers)
+      end
   end
 
   def show
