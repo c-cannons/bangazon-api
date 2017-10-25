@@ -19,6 +19,7 @@ Bangazon API provides endpoints for developers to access the bangazon.com databa
 * spring
 * spring-watcher-listen ~> 2.0.0
 * tzinfo-data
+* serializer 0.1.0
 
 ### Team Members
 
