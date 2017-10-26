@@ -14,7 +14,7 @@ class ComputersController < ApplicationController
     @computer = Computer.new(computer_params)
 
     if @computer.save
-      render json: @computer, staus: :created, location: @computer
+      render json: @computer, status: :created, location: @computer
     else
       render json: @computer.errors, status: :unprocessable_entity
     end
