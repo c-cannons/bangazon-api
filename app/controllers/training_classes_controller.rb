@@ -34,7 +34,7 @@ class TrainingClassesController < ApplicationController
     if Date.parse(@training_class[:end_date].to_s) < Date.today
       @training_class.destroy
     else
-      render html: "You done messed up Chud. You can not delete a course that has not happened yet.  You are shit for even trying.", status: :bad
+      render html: "You done messed up Chud. You can not delete a course that has not happened yet.  You are s**t for even trying.", status: :bad
     end
   end
 

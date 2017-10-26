@@ -6,7 +6,7 @@ class ProductTypesController < ApplicationController
   end
 
   def show
-    @product_type = ProductType.find(params[:id])
+    set_product_type
     render json: @product_type
   end
 
@@ -20,17 +20,20 @@ class ProductTypesController < ApplicationController
   end
 
   def update
-    @product_type = ProductType.find(params[:id])
+    set_product_type
     @product_type.update(product_type_params)
     render json: @product_type
   end
 
   def delete
-    @product_type = ProductType.find(params[:id])
+    set_product_type
     @product_type.destroy
   end
 
   private
+    def set_product_type
+      @product_type = ProductType.find(params[:id])
+    end
     def product_type_params
       params.require(:product_types).permit(:product_type_name)
     end

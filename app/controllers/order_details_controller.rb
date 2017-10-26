@@ -6,7 +6,7 @@ class OrderDetailsController < ApplicationController
   end
 
   def show
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     render json: @order_detail, serializer: OrderSerializer
   end
 
@@ -20,7 +20,7 @@ class OrderDetailsController < ApplicationController
   end
 
   def update
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     @order_detail.update(order_detail_params)
     if @order_detail.save
       render json: @order_detail, status: :created, location: @order_detail
@@ -30,11 +30,14 @@ class OrderDetailsController < ApplicationController
   end
 
   def destroy
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     @order_detail.destroy
   end
 
   private
+    def set_order_detail
+      @order_detail = OrderDetail.find(params[:id])
+    end
     def order_detail_params
       params.require(:order_details).permit(:products_id, :orders_id, :discount, :ext_price)
     end

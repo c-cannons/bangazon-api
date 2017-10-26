@@ -35,7 +35,6 @@ def index
   end
 
   private
-
     def set_employee_computer
       @employee_computer = EmployeeComputer.find(params[:id])
     end
