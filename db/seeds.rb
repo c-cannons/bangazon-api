@@ -24,21 +24,21 @@ ProductType.destroy_all
   }])
 end
 
-5.times do
+10.times do
   Product.create([{
     product_name: Faker::Pokemon.name,
     product_price: Faker::Number.decimal(2),
     product_description: Faker::RickAndMorty.quote,
-    product_types_id: rand(1..5)
+    product_types_id: rand(1..10)
   }])
 end
 
 10.times do
   Customer.create([{
-      customer_first_name: Faker::Name.first_name,
-      customer_last_name: Faker::Name.last_name,
-      customer_acct_date: Faker::Date.between(2.years.ago, Date.today),
-      customer_active: true
+    customer_first_name: Faker::Name.first_name,
+    customer_last_name: Faker::Name.last_name,
+    customer_acct_date: Faker::Date.between(2.years.ago, Date.today),
+    customer_active: true
   }])
 end
 
@@ -49,17 +49,17 @@ end
   }])
 end
 
-10.times do
+9.times do
     Order.create([{
         customers_id: Faker::Number.number(2),
         pay_methods_id: Faker::Number.number(2)
       }])
     end
 
-10.times do
+10.times do |n|
   OrderDetail.create([{
-    products_id: rand(1..10),
-    orders_id: rand(1..10),
+    products_id: n,
+    orders_id: n,
     discount: Faker::Number.decimal(1),
     ext_price: Faker::Number.decimal(2)
   }])
@@ -89,6 +89,7 @@ end
     is_supervisor: true,
     department: Department.find(rand(1..5))
   }])
+
 end
 
 10.times do
@@ -102,7 +103,7 @@ end
 
 10.times do
     TrainingSeat.create([{
-      training_classes_id: rand(1..10),
+      training_classes_id: rand(1..5),
       employees_id: rand(1..20)
     }])
 end
