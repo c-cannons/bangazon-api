@@ -7,7 +7,7 @@ class PayMethodsController < ApplicationController
 
   def show
     set_pay_method
-    render json: @pay_methods
+    render json: @pay_method
   end
 
   def create

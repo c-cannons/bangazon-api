@@ -24,8 +24,7 @@ class TrainingClassesController < ApplicationController
     if @training_class.update(training_classes_params)
       render json: @training_class
     else
-      render json: @training_class.errors,
-      status: :unprocessable_entity
+      render json: @training_class.errors, status: :unprocessable_entity
     end
   end
 
