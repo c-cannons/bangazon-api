@@ -1,13 +1,13 @@
 class DepartmentsController < ApplicationController
   # GET /departments
   def index
-      @departments = Department.all
-      render json: @departments
+    @departments = Department.all
+    render json: @departments
   end
 
   # GET /departments/1
   def show
-      render json: @department
+    render json: @department
   end
 
   # POST /departments
@@ -37,7 +37,6 @@ class DepartmentsController < ApplicationController
       @department = Department.find(params[:id])
     end
 
-    # FINISH THIS ******
     def department_params
       params.require(:department).permit(:dept_name, :budget)
     end

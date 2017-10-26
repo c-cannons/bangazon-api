@@ -68,11 +68,14 @@ end
 #   }])
 # end
 
-
-  # Computer.create([{
-  #   purchase_date: Faker::Date.between(2.years.ago, Date.today),
-  #   decomm_date: Faker::Date.between(2.years.ago, Date.today)
-  # }])
+10.times do
+  Computer.create([{
+    computer_brand: 'Samsung',
+    computer_model: 'laptop',
+    purchase_date: Faker::Date.between(2.years.ago, Date.today),
+    decomm_date: Faker::Date.between(2.years.ago, Date.today)
+  }])
+end
 
 # 5.times do
 #   TrainingClass.create([{

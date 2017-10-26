@@ -6,27 +6,38 @@ class OrderDetailsController < ApplicationController
   end
 
   def show
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     render json: @order_detail, serializer: OrderSerializer
   end
 
   def create
     @order_detail = OrderDetail.create(order_detail_params)
-    json_response(@order_detail)
+    if @order_detail.save
+      render json: @order_detail, status: :created, location: @order_detail
+    else
+      render json: @order_detail.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     @order_detail.update(order_detail_params)
-    json_response(@order_detail)
+    if @order_detail.save
+      render json: @order_detail, status: :created, location: @order_detail
+    else
+      render json: @order_detail.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @order_detail = OrderDetail.find(params[:id])
+    set_order_detail
     @order_detail.destroy
   end
 
   private
+    def set_order_detail
+      @order_detail = OrderDetail.find(params[:id])
+    end
     def order_detail_params
       params.require(:order_details).permit(:products_id, :orders_id, :discount, :ext_price)
     end
