@@ -12,13 +12,21 @@ class OrderDetailsController < ApplicationController
 
   def create
     @order_detail = OrderDetail.create(order_detail_params)
-    json_response(@order_detail)
+    if @order_detail.save
+      render json: @order_detail, status: :created, location: @order_detail
+    else
+      render json: @order_detail.errors, status: :unprocessable_entity
+    end
   end
 
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order_detail.update(order_detail_params)
-    json_response(@order_detail)
+    if @order_detail.save
+      render json: @order_detail, status: :created, location: @order_detail
+    else
+      render json: @order_detail.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy

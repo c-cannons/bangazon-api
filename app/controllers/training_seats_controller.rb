@@ -31,5 +31,4 @@ class TrainingSeatsController < ApplicationController
       params.require(:training_seat).permit(:training_classes_id, :employees_id)
     end
 
-
 end

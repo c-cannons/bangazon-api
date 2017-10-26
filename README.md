@@ -12,7 +12,7 @@ Bangazon API provides endpoints for developers to access the bangazon.com databa
 
   ##### To make A request for customers from Bangazon.com
   - make sure your ~~refrigerator~~ rails server is running
-  - Add a host mask of the local http server [How do I do that?](http://www.mactip.net/how-to-edit-the-hosts-file-on-a-mac/)
+  - Add a host mask of the local http server [How do I do that?] (http://www.mactip.net/how-to-edit-the-hosts-file-on-a-mac/)
   - set the mask to `bangazon.com`
   - From the bangazon directory Run `hs`
   - Go to `bangazon.com:8080` in the browser to request list of customers
