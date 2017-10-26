@@ -2,32 +2,42 @@ class PayMethodsController < ApplicationController
 
   def index
     @pay_methods = PayMethod.all
-    json_response(@pay_methods)
+    render json: @pay_methods
   end
 
   def show
-    @pay_method = PayMethod.find(params[:id])
-    json_response(@pay_method)
+    set_pay_method
+    render json: @pay_methods
   end
 
   def create
     @pay_method = PayMethod.create(pay_method_params)
-    json_response(@pay_method)
+    if @pay_method.save
+      render json: @pay_method, status: :created, location: @pay_method
+    else
+      render json: @pay_method.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @pay_method = PayMethod.find(params[:id])
+    set_pay_method
     @pay_method.update(pay_method_params)
-    json_response(@pay_method)
+    if @pay_method.save
+      render json: @pay_method, status: :created, location: @pay_method
+    else
+      render json: @pay_method.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @pay_method = PayMethod.find(params[:id])
+    set_pay_method
     @pay_method.destroy
   end
 
   private
-
+    def set_pay_method
+      @pay_method = PayMethod.find(params[:id])
+    end
     def pay_method_params
       params.require(:pay_methods).permit(:payment_type, :account_number)
     end

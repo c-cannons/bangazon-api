@@ -22,7 +22,11 @@ class ProductTypesController < ApplicationController
   def update
     set_product_type
     @product_type.update(product_type_params)
-    render json: @product_type
+    if @product_type.save
+      render json: @product_type, status: :created, location: @product_type
+    else
+      render json: @product_type.errors, status: :unprocessable_entity
+    end
   end
 
   def delete
