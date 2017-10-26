@@ -6,27 +6,38 @@ class TrainingSeatsController < ApplicationController
   end
 
   def show
-    @training_seat = TrainingSeat.find(params[:id])
+    set_training_seat
     render json: @training_seat
   end
 
   def create
-    @training_seat = TrainingSeat.create(training_seat_params)
-    render json: @training_seat
+    @training_seat = TrainingSeat.new(training_seat_params)
+    if @training_seat.save
+      render json: @training_seat, status: :created, location: @training_seat
+    else
+      render json: @training_seat.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @training_seat = TrainingSeat.find(params[:id])
-    @training_seat.update(training_seat_params)
-    render json: @training_seat
+    set_training_seat
+    if @training_seat.update(training_seat_params)
+      render json: @training_seat
+    else
+      render json: @training_seat, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @training_seat = TrainingSeat.find(params[:id])
+    set_training_seat
     @training_seat.destroy
   end
 
   private
+    def set_training_seat
+      @training_seat = TrainingSeat.find(params[:id])
+    end
+
     def training_seat_params
       params.require(:training_seat).permit(:training_classes_id, :employees_id)
     end
