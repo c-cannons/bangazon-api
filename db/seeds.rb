@@ -68,11 +68,14 @@
 #   }])
 # end
 
-
-  # Computer.create([{
-  #   purchase_date: Faker::Date.between(2.years.ago, Date.today),
-  #   decomm_date: Faker::Date.between(2.years.ago, Date.today)
-  # }])
+10.times do
+  Computer.create([{
+    computer_brand: 'Samsung',
+    computer_model: 'laptop',
+    purchase_date: Faker::Date.between(2.years.ago, Date.today),
+    decomm_date: Faker::Date.between(2.years.ago, Date.today)
+  }])
+end
 
 # 5.times do
 #   TrainingClass.create([{
@@ -83,11 +86,11 @@
 #   }])
 # end
 
-10.times do
-  OrderDetail.create([{
-    products_id: rand(1..10),
-    orders_id: rand(1..10),
-    discount: Faker::Number.decimal(1),
-    ext_price: Faker::Number.decimal(2)
-  }])
-end
+# 10.times do
+#   OrderDetail.create([{
+#     products_id: rand(1..10),
+#     orders_id: rand(1..10),
+#     discount: Faker::Number.decimal(1),
+#     ext_price: Faker::Number.decimal(2)
+#   }])
+# end
