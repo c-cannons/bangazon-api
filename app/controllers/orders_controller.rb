@@ -1,24 +1,24 @@
 class OrdersController < ApplicationController
 
   def index
-      @orders = Order.all
-      json_response(@orders)
+    @orders = Order.all
+    json_response(@orders)
   end
 
   def show
-      @order = Order.find(params[:id])
-      json_response(@order)
+    @order = Order.find(params[:id])
+    json_response(@order)
   end
 
   def create
-      @order = Order.create(order_params)
-      json_response(@order)
+    @order = Order.create(order_params)
+    json_response(@order)
   end
 
   def update
-      @order = Order.find(params[:id])
-      @order.update(order_params)
-      json_response(@order)
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    json_response(@order)
   end
 
   def delete
