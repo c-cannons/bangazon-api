@@ -14,23 +14,37 @@ class CustomersController < ApplicationController
   end
 
   def show
-      @customer = Customer.find(params[:id])
-      json_response(@customer)
+      set_customer
+      render json: @customer
   end
 
   def create
-      @customer = Customer.create(customer_params)
-      json_response(@customer)
+      @customer = Customer.new(customer_params)
+
+      if @customer.save
+        render json: @customer, status: :created, location: @customer
+      else
+        render json: @customer.errors, staus: :unprocessable_entity
       # redirect_to @customer
+    end
   end
 
   def update
-      @customer = Customer.find(params[:id])
-      @customer.update(customer_params)
-      json_response(@customer)
+    set_customer
+
+    if @customer.update(customer_params)
+      render json: @customer
+    else
+      render json: @customer.errors, status: :unprocessable_entity
+    end
   end
 
   private
+
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
+
     def customer_params
         params.require(:customers).permit(:customer_first_name, :customer_last_name, :customer_acct_date, :customer_active)
     end

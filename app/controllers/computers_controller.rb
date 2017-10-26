@@ -1,35 +1,49 @@
 class ComputersController < ApplicationController
 
-def index
-  @computers = Computer.all
-  json_response(@computers)
-end
+  def index
+    @computers = Computer.all
+    render json: @computers
+  end
 
-def show
-  @computer = Computer.find(params[:id])
-  json_response(@computer)
-end
+  def show
+    set_computer
+    render json: @computer
+  end
 
-def create
-  @computer = Computer.create(computer_params)
-  json_response(@computer)
-end
+  def create
+    @computer = Computer.new(computer_params)
 
-def update
-  @computer = Computer.find(params[:id])
-  @computer.update(computer_params)
-  json_response(@computer)
-end
+    if @computer.save
+      render json: @computer, status: :created, location: @computer
+    else
+      render json: @computer.errors, status: :unprocessable_entity
+    end
+  end
 
-def destroy
-  @computer = Computer.find(params[:id])
-  @computer.destroy
-end
+  def update
+    set_computer
+
+    if @computer.update(computer_params)
+      render json: @computer
+    else
+      render json: @computer.errors,
+      status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    set_computer
+    @computer.destroy
+  end
 
 private
 
-def computer_params
-  params.require(:computers).permit(:computer_brand, :computer_model, :purchase_date, :decomm_date)
-end
+  def set_computer
+    @computer = Computer.find(params[:id])
+  end
+
+  def computer_params
+    params.require(:computers).permit(:computer_brand, :computer_model, :purchase_date, :decomm_date)
+  end
 
 end
