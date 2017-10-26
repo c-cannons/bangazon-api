@@ -4,7 +4,7 @@ class CreateTrainingClasses < ActiveRecord::Migration[5.1]
       t.string :class_name, null: false, limit: 20
       t.datetime :start_date, null: false
       t.datetime :end_date, null: false
-      t.integer :max_seats, null: false, limit: 1
+      t.integer :max_seats, null: false
 
       t.timestamps
     end
