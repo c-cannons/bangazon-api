@@ -32,7 +32,7 @@ Bangazon API provides endpoints for developers to access the bangazon.com databa
 
 ### Team Members
 
-* [Eric Palmerie](https://github.com/palmierie)
+* [Eric Palmeri](https://github.com/palmierie)
 * [Ted Pennington](https://github.com/tedpennington)
 * [Hiatt Collins](https://github.com/hiattcollins)
 * [Matt Brown](https://github.com/mtallentb)
